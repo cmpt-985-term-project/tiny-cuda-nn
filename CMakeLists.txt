@@ -160,6 +160,7 @@ if (TCNN_HAS_PARENT)
 endif()
 
 if (MSVC)
+	list(APPEND CUDA_NVCC_FLAGS "-Xcompiler=-bigobj")
 else()
 	list(APPEND CUDA_NVCC_FLAGS "-Xcompiler=-mf16c")
 	list(APPEND CUDA_NVCC_FLAGS "-Xcompiler=-Wno-float-conversion")
@@ -182,6 +183,7 @@ find_library(
 	CUDA_CUBLASLT_LIBRARY cublasLt
 	${CUDA_TOOLKIT_ROOT_DIR}/lib64
 	${CUDA_TOOLKIT_ROOT_DIR}/lib
+	${CUDA_TOOLKIT_ROOT_DIR}/lib/x64
 )
 
 set(BUILD_SHARED_LIBS OFF)
