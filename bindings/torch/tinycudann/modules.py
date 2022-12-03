@@ -138,7 +138,7 @@ class Module(torch.nn.Module):
 		self.params = torch.nn.Parameter(initial_params, requires_grad=True)
 		self.register_parameter(name="params", param=self.params)
 
-		self.loss_scale = 128.0 if self.native_tcnn_module.param_precision() == _C.Precision.Fp16 else 1.0
+		self.loss_scale = 1024.0 if self.native_tcnn_module.param_precision() == _C.Precision.Fp16 else 1.0
 
 	def forward(self, x):
 		if not x.is_cuda:
